@@ -1,13 +1,14 @@
 // 🎈 No external server needed spring boot comes with embeded tomcat server
 package com.jasmeet.demo;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
 
 //✨ A Spring MVC based controller
 @Controller
@@ -15,23 +16,24 @@ public class HomeController {
 	
 	// ✨ maps with request home i.e  this method executes when home request is made
 	@RequestMapping("home")
-	// 🎈 creating a HttpServletRequest object to grab data from client side(views)
-	public String home(HttpServletRequest req,HttpServletResponse res) 
+	
+	// 🎈 Grabbing 'myname' as 'name' from request params, from client with HttpSession object as parameters in springBoot  due to DI  
+	// To match the request param key if it is passed as
+	// localhost:8080/home?myname=SomeName
+	// than  for myName  to be treated as name we use annotation
+	// @RequestParam("myName") -> becomes name at controller
+	public ModelAndView home(@RequestParam("myname") String name) 
 	{
-		// 🎇 passing data via session b/w servlets
-		HttpSession session = req.getSession();
 		
-		// ✨ grab the params passed in request
-		// localhost:8080/home?name=someName
-		String name = req.getParameter("name");
+		// 💡 creating a model&view object to pass data to dispatcherservlet(frontcontroller)
+		ModelAndView mv = new ModelAndView();
 		
-		System.out.println("Hi "+ name +" (from Home controller)");
+		// 🎈 embeding model & view to the object
+		mv.addObject("myname",name); // a key:value pair passed as model(data) to dispatcherServlet
+		mv.setViewName("home");
 		
-		// passes a key:value pair attribute from one Servlet to another
-		session.setAttribute("name", name); //{"name",SomeName}
-		
-		// 🎆 returns home view
-		return "home";
+		// 🎆 returns home view + data(model) to dispatcherservlet without using HttpSession
+		return mv;
 	}
 }
 

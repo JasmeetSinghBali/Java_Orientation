@@ -1,6 +1,6 @@
 > ## Web App using Spring Boot
 
-> Basic Boilerplate
+> ## Basic Boilerplate
 
 - refer commit - 🎈First Home View and Controller
 
@@ -28,7 +28,7 @@
 
 ---
 
-> Application.Properties(Manual config) inside src/main/resources Files
+> ## Application.Properties(Manual config) inside src/main/resources Files
 **Used for configuration**
 - contains key:value pairs
 - use prefix & suffix + ctrl space for intelli sense inside application.properties
@@ -41,7 +41,7 @@
 
 ---
 
-> Accepting Client Data
+> ## Accepting Client Data
 
 - create a HttpServletRequest to grab client data
 - refer HomeController.java inside src/main/java
@@ -95,4 +95,24 @@
 
 ---
 
-> Model&View in SpringBoot
+> ## Model&View in SpringBoot without using servlet request,response objects
+
+- refer commit 🎈 Model&View useCase without session/req,res object
+	- grabbing 'myname' as 'name' in request param
+	-To match the request param key if it is passed as
+	- localhost:8080/home?myname=SomeName
+	- than  for myName  to be treated as name we use annotation
+	- @RequestParam("myname") -> becomes name at Home controller
+
+**When passing multiple params using RequestParam() is a great choice**
+
+---
+
+> ## Omitting the use of HttpSession to pass data
+**when we are passing data(model) & view to DispatcherServlet**
+
+- **IMPORTANT A COMBINATION OF MODEL&VIEW WHERE MODEL MEANS DATA, CAN BE USED TO OMIT THE USE OF HttpSession to pass data in SpringBoots**
+
+> what is DispatcherServlet
+**The DispatcherServlet is the front controller(that processes which request will go to which controller) in Spring web applications. It's used to create web applications and REST services in Spring MVC.**
+ 

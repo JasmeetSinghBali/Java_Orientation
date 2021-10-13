@@ -7,8 +7,8 @@
 <title>Simple Web App</title>
 </head>
 <body>
-	<!-- pulling name from session refer HomeController.java -->
-	Welcome ${name} (from Home View) 
+	<!-- pulling name as myname from dispatcher Servlet via Model&View refer HomeController.java -->
+	Welcome ${myname} (from Home View) 
 </body>
 </html>
 
