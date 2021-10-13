@@ -24,9 +24,22 @@
       			    <version>9.0.53</version>
       			</dependency>
 
-
 - tomcat jasper will now automatically convert jsp into servlets, as ultimately their are servlets that are running in the background no matter which tech we are using while developing java based applications
 
 ---
 
-> Application Properties Files
+> Application.Properties(Manual config) inside src/main/resources Files
+**Used for configuration**
+- contains key:value pairs
+- use prefix & suffix + ctrl space for intelli sense inside application.properties
+
+
+					# application.properties
+					# specify prefix & suffix for views
+					spring.mvc.view.prefix=/pages/
+					spring.mvc.view.suffix=.jsp
+
+---
+
+> Accepting Client Data
+

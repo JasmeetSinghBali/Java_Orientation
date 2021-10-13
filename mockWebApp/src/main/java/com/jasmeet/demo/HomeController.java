@@ -13,7 +13,7 @@ public class HomeController {
 	public String home() {
 		System.out.println("hi from home controller..");
 		// 🎆 returns home view
-		return "home.jsp";
+		return "home";
 	}
 }
 
