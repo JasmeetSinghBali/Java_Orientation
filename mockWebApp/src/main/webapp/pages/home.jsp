@@ -7,7 +7,8 @@
 <title>Simple Web App</title>
 </head>
 <body>
-	Finally Home View Displayed
+	<!-- pulling name from session refer HomeController.java -->
+	Welcome ${name} (from Home View) 
 </body>
 </html>
 

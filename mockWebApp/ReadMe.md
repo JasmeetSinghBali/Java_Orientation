@@ -43,3 +43,56 @@
 
 > Accepting Client Data
 
+- create a HttpServletRequest to grab client data
+- refer HomeController.java inside src/main/java
+
+- to give back response it can be
+	- request dispatcher
+	- response.redirect or send
+
+- now springboot uses request dispatcher when we make use HttpServletRequest object
+
+> IMPORTANT Request dispatcher& sendRedirect?
+**We send two different request in case of SendRedirect, while same req,res object pair is forwarded in case of request dispatcher**
+
+- calling a servlet (s1) from servlet(s2)
+- i.e s1 calling s2 or vice a versa
+
+						# Case-1 client make request to s1 and s1 sends back response
+						C1--->S1 (req)
+						S1---->C1 (res)
+						
+						# Case-2 S1 do not immediately sends response instead make the request further to servlet S2
+						C1---> S1  (req,res)
+
+- **S1 servlet can call s2 via Request Dispatcher(rd)**
+
+						S1---> S2 (pass on req,res from S1 to S2 via rd)
+						S2---->C1 (sends back the same object res from S2(servlet2) to C1(client))
+												
+- **as a client i.e browser do not knows how the request is being handled internally and passed to two different servlet**
+
+> Now the request dispatcher works perfectly when both the servlets are on the same domain
+
+> SendRedirect(), However say S1 is xyz.com and S2 is paypal , and client wants to donate to xyz.com via paypal (Request dispatcher cannot be used in this case)
+
+- **In these type of case S1 will redirect the browser/client to paypal servers so that client can directly interact with the paypal servers via S2**
+
+- **here we make use of SendRedirect(), where S1 will inform client and then redirect them to S2 that is handling the payment service at paypal.com**
+ 
+ 
+ 						# case for SendRedirect()
+ 						C1->S1 (req1)
+ 						S1->C1 (informs & redirects C1 to S2 )
+ 						C1->S2 (req2,res2)
+ 						
+- **Also if additional data need to be passed from S1 to S2 in SendRedirect() scenario then we have to maintain sessions**
+
+
+>EL(expression language)  to display data at view(client side)
+
+**The Expression Language (EL) simplifies the accessibility of data stored in the Java Bean component, and other objects like request, session, application etc.**
+
+---
+
+> Model&View in SpringBoot
