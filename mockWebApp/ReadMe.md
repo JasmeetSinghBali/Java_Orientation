@@ -97,7 +97,7 @@
 
 > ## Model&View in SpringBoot without using servlet request,response objects
 
-- refer commit 🎈 Model&View useCase without session/req,res object
+- refer commit 🎈 Use Model&View not session or req,res object
 	- grabbing 'myname' as 'name' in request param
 	-To match the request param key if it is passed as
 	- localhost:8080/home?myname=SomeName
@@ -115,4 +115,14 @@
 
 > what is DispatcherServlet
 **The DispatcherServlet is the front controller(that processes which request will go to which controller) in Spring web applications. It's used to create web applications and REST services in Spring MVC.**
+
+---
+
+> ## Model Object (refer HomeController.java)
  
+ **refer Alien.java inside src/main/java we want to send aid,aname & lang from client as request params**
+ 
+> 💡 the idea is to accept these three params as single object rather than three different variables
+
+				http://localhost:8080/home?aid=1&aname=john&lang=python
+				Welcome User: 1 , john , python (from Home View) 
